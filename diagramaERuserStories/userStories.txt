@@ -1,0 +1,18 @@
+User Stories
+
+1. Como usuario guest debo poder crearme una cuenta para gestionar turnos
+		- Debo poder llenar el formulario, introducir usuario, contraseña y foto opcional
+		- No debo tener permitido enviar el formulario si hay datos inválidos
+2. Debo poder iniciar sesión con mis credenciales como usuario registrado
+		- Introducir usuario y contraseña
+3. Como usuario registrado debo poder crear un turno
+		- Ingresar a la página para seleccionar opciones de turno
+		- Elegir fecha, hora y motivos o detalles
+		- Aceptar creación de turno
+		- Debo ir automáticamente a mi historial de turnos
+		- Debo recibir un mail de confirmación de mi turno
+4. Debo poder observar mi historial de turnos
+		- Saber los detalles de cada uno, en forma de lista
+		- Tener la posibilidad de cancelar los que yo quiera y crear más turnos desde el historial
+5. Debo poder cerrar sesión cuando termine de crear mis turnos
+6. Como usuario debo tener acceso a la página principal donde tendré información importante de la empresa en la que estoy registrando mis turnos
