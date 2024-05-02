@@ -10,19 +10,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cancelAppointment = exports.createAppointment = exports.getOneAppointment = exports.getAppointments = void 0;
+const appointmentsServices_1 = require("../services/appointmentsServices");
 const getAppointments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Controlador que muestra los turnos");
+    const appointments = yield (0, appointmentsServices_1.getAppointmentsService)();
+    res.status(200).json(appointments);
 });
 exports.getAppointments = getAppointments;
 const getOneAppointment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Controlador que muestra turno específico");
+    const appointmentId = parseInt(req.params.id, 10);
+    const appointmentById = yield (0, appointmentsServices_1.getOneAppointmentService)(appointmentId);
+    res.status(200).json(appointmentById);
 });
 exports.getOneAppointment = getOneAppointment;
 const createAppointment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Controlador que agenda un turno");
+    const { date, time, status, userId } = req.body;
+    const newAppointment = yield (0, appointmentsServices_1.createAppointmentService)({ date, time, status, userId });
+    res.status(201).json(newAppointment);
 });
 exports.createAppointment = createAppointment;
 const cancelAppointment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Controlador que cancela un turno");
+    const appointmentId = parseInt(req.params.id, 10);
+    const cancelAppointment = yield (0, appointmentsServices_1.cancelAppointmentService)(appointmentId);
+    res.status(200).json(cancelAppointment);
 });
 exports.cancelAppointment = cancelAppointment;

@@ -3,12 +3,12 @@ import { getAppointments,getOneAppointment,createAppointment,cancelAppointment }
 
 const appointmentsRouter: Router = Router()
 
-appointmentsRouter.get("/",getAppointments)
+appointmentsRouter.get("/",getAppointments) //funciona
 
-appointmentsRouter.get("/appointment",getOneAppointment)
+appointmentsRouter.get("/:id",getOneAppointment) //funciona
 
-appointmentsRouter.post("/appointment/schedule",createAppointment)
+appointmentsRouter.post("/schedule",createAppointment) //funciona
 
-appointmentsRouter.put("/appointment/cancel",cancelAppointment)
+appointmentsRouter.put("/cancel/:id",cancelAppointment) //funciona
 
 export default appointmentsRouter

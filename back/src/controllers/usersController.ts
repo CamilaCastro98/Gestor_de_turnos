@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { getUsersService,registerUserService,deleteUsersService } from "../services/usersServices"
+import { getUsersService,registerUserService,deleteUsersService, getUserByIdService } from "../services/usersServices"
 import IUser from "../interfaces/IUser"
 
 export const getUsers = async (req: Request,res: Response) => {
@@ -7,13 +7,15 @@ export const getUsers = async (req: Request,res: Response) => {
     res.status(200).json(users)
 }
 
-export const getUserId = async (req: Request,res: Response) => {
-    console.log("Este controlador muestra user según id")
+export const getUserById = async (req: Request,res: Response) => {
+    const userId:number = parseInt(req.params.id,10)
+    const userById = await getUserByIdService(userId)
+    res.status(200).json(userById)
 }
 
 export const registerUser = async (req: Request,res: Response) => {
-    const { name,mail,profilePicture,active } = req.body
-    const newUser: IUser = await registerUserService({name,mail,profilePicture,active})
+    const { name,email,profilePicture,birthdate, nDni, username, password,active } = req.body
+    const newUser: IUser = await registerUserService({name,email,profilePicture, birthdate, nDni, username,password, active})
     res.status(201).json(newUser)
 }
 

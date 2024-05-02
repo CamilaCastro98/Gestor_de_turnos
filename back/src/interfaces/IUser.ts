@@ -2,7 +2,10 @@ interface IUser {
     id: number,
     name: string,
     profilePicture: string,
-    mail: string,
+    email: string,
+    birthdate: string,
+    nDni: number,
+    credentialsId:number,
     active: boolean
 }
 

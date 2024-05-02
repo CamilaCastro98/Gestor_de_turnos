@@ -9,20 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUser = exports.loginUser = exports.registerUser = exports.getUserId = exports.getUsers = void 0;
+exports.deleteUser = exports.loginUser = exports.registerUser = exports.getUserById = exports.getUsers = void 0;
 const usersServices_1 = require("../services/usersServices");
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield (0, usersServices_1.getUsersService)();
     res.status(200).json(users);
 });
 exports.getUsers = getUsers;
-const getUserId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Este controlador muestra user según id");
+const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = parseInt(req.params.id, 10);
+    const userById = yield (0, usersServices_1.getUserByIdService)(userId);
+    res.status(200).json(userById);
 });
-exports.getUserId = getUserId;
+exports.getUserById = getUserById;
 const registerUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, mail, profilePicture, active } = req.body;
-    const newUser = yield (0, usersServices_1.registerUserService)({ name, mail, profilePicture, active });
+    const { name, email, profilePicture, birthdate, nDni, username, password, active } = req.body;
+    const newUser = yield (0, usersServices_1.registerUserService)({ name, email, profilePicture, birthdate, nDni, username, password, active });
     res.status(201).json(newUser);
 });
 exports.registerUser = registerUser;

@@ -9,29 +9,43 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUsersService = exports.registerUserService = exports.getUsersService = void 0;
-let users = [];
+exports.deleteUsersService = exports.registerUserService = exports.getUserByIdService = exports.getUsersService = void 0;
+const credentialsServices_1 = require("./credentialsServices");
+let usersArray = [];
 let id = 1;
 const getUsersService = () => __awaiter(void 0, void 0, void 0, function* () {
-    return users;
+    return usersArray;
 });
 exports.getUsersService = getUsersService;
+const getUserByIdService = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    for (let i = 0; i < usersArray.length; i++) {
+        if (usersArray[i].id === userId) {
+            return usersArray[i];
+        }
+    }
+    return new Error('No se encontró usuario');
+});
+exports.getUserByIdService = getUserByIdService;
 const registerUserService = (userData) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, mail, profilePicture, active } = userData;
+    const { name, email, profilePicture, birthdate, nDni, username, password, active } = userData;
+    const credentialsId = yield (0, credentialsServices_1.registerCredentialsService)(username, password);
     const newUser = {
         id: id,
         name: name,
-        mail: mail,
+        email: email,
         profilePicture: profilePicture,
+        birthdate: birthdate,
+        nDni: nDni,
+        credentialsId: credentialsId,
         active: active
     };
-    users.push(newUser);
+    usersArray.push(newUser);
     id++;
     return newUser;
 });
 exports.registerUserService = registerUserService;
 const deleteUsersService = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    users = users.filter((user) => user.id !== userId);
-    return users;
+    usersArray = usersArray.filter((user) => user.id !== userId);
+    return usersArray;
 });
 exports.deleteUsersService = deleteUsersService;

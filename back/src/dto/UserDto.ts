@@ -1,7 +1,11 @@
 interface UserDto {
     name: string,
     profilePicture: string,
-    mail: string,
+    email: string,
+    birthdate: string,
+    nDni: number,
+    username: string,
+    password: string,
     active: boolean
 }
 
