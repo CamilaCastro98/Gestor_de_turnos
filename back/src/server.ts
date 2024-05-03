@@ -15,6 +15,5 @@ app.use("/",router)
 app.use((err: ICustomError,req: Request,res: Response,next: NextFunction)=> {
     res.status(err.statusCode || 500).json({ error:err.message })
 })
-//FALTA HACER ERRORES PERSONALIZADOS
-
+//FALTA MIDDLEWARES PARA MANEJAR ERRORES Y VALIDACIONES
 export default app

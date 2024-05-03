@@ -1,25 +1,23 @@
-import ICredential from "../interfaces/ICredential"
+import { CredentialModel } from "../configs/data-source"
+import { Credential } from "../entities/Credential"
 
-let credentialsArray: ICredential[] = []
-let credentialsId: number = 1
-export const registerCredentialsService = async (username:string,password:string): Promise<number> => {
-    const credentials: ICredential = {
-        id: credentialsId,
+export const registerCredentialsService = async (username:string,password:string): Promise<Credential> => {
+    const newCredential: Credential = await CredentialModel.create({
         username: username,
         password: password
-    }
-    credentialsArray.push(credentials)
-    credentialsId ++
-    return credentials.id
+    })
+    const results = await CredentialModel.save(newCredential)
+    return results
 }
 
 export const validateCredentialsService = async (username:string,password:string): Promise<number | Error > => {
-    for(let i = 0; i < credentialsArray.length ; i++) {
-        if(credentialsArray[i].username === username) {
-            if(credentialsArray[i].password === password) {
-                return credentialsArray[i].id
+    const allCredentials: Credential[] = await CredentialModel.find()
+    for(let i = 0; i < allCredentials.length ; i++) {
+        if(allCredentials[i].username === username) {
+            if(allCredentials[i].password === password) {
+                return allCredentials[i].id
             }
         }
     }
-    return new Error ('Datos inválidos')
+    return new Error ("Datos inválidos")
 }
