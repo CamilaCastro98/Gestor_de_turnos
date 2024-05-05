@@ -10,41 +10,35 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cancelAppointmentService = exports.createAppointmentService = exports.getOneAppointmentService = exports.getAppointmentsService = void 0;
-let appointmentsArray = [];
-let appointmentId = 1;
+const AppointmentRepository_1 = require("../repositories/AppointmentRepository");
 const getAppointmentsService = () => __awaiter(void 0, void 0, void 0, function* () {
-    return appointmentsArray;
+    const allAppointments = yield AppointmentRepository_1.AppointmentRepository.find();
+    return allAppointments;
 });
 exports.getAppointmentsService = getAppointmentsService;
 const getOneAppointmentService = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    for (let i = 0; i < appointmentsArray.length; i++) {
-        if (appointmentsArray[i].id === id) {
-            return appointmentsArray[i];
-        }
-    }
-    return new Error('No se encontró turno');
+    const appointment = yield AppointmentRepository_1.AppointmentRepository.findOneBy({ id: id });
+    return appointment;
 });
 exports.getOneAppointmentService = getOneAppointmentService;
 const createAppointmentService = (appointmentData) => __awaiter(void 0, void 0, void 0, function* () {
     const { date, time, status, userId } = appointmentData;
-    const newAppointment = {
-        id: appointmentId,
-        date: date,
-        time: time,
-        userId: userId,
-        status: status
-    };
-    appointmentsArray.push(newAppointment);
-    appointmentId++;
-    return newAppointment;
+    const newAppointment = yield AppointmentRepository_1.AppointmentRepository.create({
+        date,
+        time,
+        status,
+        userId
+    });
+    const results = yield AppointmentRepository_1.AppointmentRepository.save(newAppointment);
+    return results;
 });
 exports.createAppointmentService = createAppointmentService;
 const cancelAppointmentService = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    for (let i = 0; i < appointmentsArray.length; i++) {
-        if (appointmentsArray[i].id === id) {
-            appointmentsArray[i].status = "Cancelled";
-            return "Appointment cancelled";
-        }
+    const appointment = yield AppointmentRepository_1.AppointmentRepository.findOneBy({ id: id });
+    if (appointment) {
+        appointment.status = "cancelled";
+        yield AppointmentRepository_1.AppointmentRepository.save(appointment);
+        return "Appointment cancelled";
     }
 });
 exports.cancelAppointmentService = cancelAppointmentService;

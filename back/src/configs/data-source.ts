@@ -11,6 +11,7 @@ export const AppDataSource = new DataSource({
     password: "obaSikDAta78.",
     database: "turn_manager",
     synchronize: true,
+    //dropSchema:true,
     logging: ["error"],
     entities: [User,Appointment,Credential],
     subscribers: [],

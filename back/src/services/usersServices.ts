@@ -1,44 +1,57 @@
-import UserDto from "../dto/UserDto"
-import { registerCredentialsService } from "./credentialsServices"
-import { User } from "../entities/User"
-import { UserModel } from "../configs/data-source"
-
+import UserDto from "../dto/UserDto";
+import { registerCredentialsService, validateCredentialsService } from "./credentialsServices";
+import { User } from "../entities/User";
+import { UserRepository } from "../repositories/UserRepository";
+import { Credential } from "../entities/Credential";
 
 export const getUsersService = async (): Promise<User[]> => {
-        const users = await UserModel.find({
-                relations: {
-                        credentialsId: true,
-                }
-        })
-        return users
+  const users = await UserRepository.find({
+    relations: {
+      credentialsId: true,
+    },
+  });
+  return users;
+};
 
-}
-
-export const getUserByIdService = async (userId: number): Promise<User | null> => {
-        const user = await UserModel.findOneBy({id:userId})
-        return user 
-}
+export const getUserByIdService = async (
+  userId: number
+): Promise<User | null > => {
+  const user = await UserRepository.findOneBy({ id: userId });
+  return user
+};
 
 export const registerUserService = async (userData: UserDto): Promise<User> => {
-        const {name,email,profilePicture, birthdate, nDni, username, password, active} = userData
-        //Registro las credenciales nuevas y espero a que retorne la instancia de la credencial
-        const newCredentials = await registerCredentialsService(username,password)
-       //Creo user con referencia de las credenciales que me acaba de retornar
-        const newUser = await UserModel.create(
-           {name, 
-           profilePicture, 
-           email,
-           birthdate,
-           nDni,
-           active,
-           credentialsId: newCredentials
-       })
-        const results = await UserModel.save(newUser)
-        return results
+  const {
+    name,
+    email,
+    profilePicture,
+    birthdate,
+    nDni,
+    username,
+    password,
+  } = userData;
+  //Registro las credenciales nuevas y espero a que retorne la instancia de la credencial
+  const newCredentials = await registerCredentialsService(username, password);
+  //Creo user con referencia de las credenciales que me acaba de retornar
+  const newUser = await UserRepository.create({
+    name,
+    profilePicture,
+    email,
+    birthdate,
+    nDni,
+    credentialsId: newCredentials,
+    active: true
+  });
+  const results = await UserRepository.save(newUser);
+  return results;
+};
 
-}
+export const loginUserService = async (username: string,password: string): Promise<number | undefined> => {
+      const verifyCredentials: number | undefined = await validateCredentialsService(username,password)
+      return verifyCredentials
+  }
 
 export const deleteUsersService = async (userId: number): Promise<string> => {
-    await UserModel.delete(userId)
-    return "User deleted"
-}
+  await UserRepository.delete(userId);
+  return "User deleted";
+};

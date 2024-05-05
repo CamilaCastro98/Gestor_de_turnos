@@ -10,27 +10,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateCredentialsService = exports.registerCredentialsService = void 0;
-let credentialsArray = [];
-let credentialsId = 1;
+const CredentialRepository_1 = require("../repositories/CredentialRepository");
 const registerCredentialsService = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
-    const credentials = {
-        id: credentialsId,
+    const newCredential = yield CredentialRepository_1.CredentialRepository.create({
         username: username,
-        password: password
-    };
-    credentialsArray.push(credentials);
-    credentialsId++;
-    return credentials.id;
+        password: password,
+    });
+    const results = yield CredentialRepository_1.CredentialRepository.save(newCredential);
+    return results;
 });
 exports.registerCredentialsService = registerCredentialsService;
 const validateCredentialsService = (username, password) => __awaiter(void 0, void 0, void 0, function* () {
-    for (let i = 0; i < credentialsArray.length; i++) {
-        if (credentialsArray[i].username === username) {
-            if (credentialsArray[i].password === password) {
-                return credentialsArray[i].id;
+    const allCredentials = yield CredentialRepository_1.CredentialRepository.find();
+    for (let i = 0; i < allCredentials.length; i++) {
+        if (allCredentials[i].username === username) {
+            if (allCredentials[i].password === password) {
+                return allCredentials[i].id;
             }
         }
     }
-    return new Error('Datos inválidos');
+    return new Error("Datos inválidos");
 });
 exports.validateCredentialsService = validateCredentialsService;

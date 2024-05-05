@@ -2,11 +2,10 @@ interface UserDto {
     name: string,
     profilePicture: string,
     email: string,
-    birthdate: string,
+    birthdate: Date,
     nDni: number,
     username: string,
-    password: string,
-    active: boolean
+    password: string
 }
 
 export default UserDto

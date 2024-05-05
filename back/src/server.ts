@@ -2,7 +2,7 @@ import express, { NextFunction, Request, Response } from "express"
 import router from "./routes"
 import morgan from "morgan"
 import cors from "cors"
-import ICustomError from "./interfaces/ICustomError"
+import CustomError from "./errors/CustomError"
 
 const app = express()
 
@@ -12,8 +12,12 @@ app.use(cors())
 
 app.use("/",router)
 
-app.use((err: ICustomError,req: Request,res: Response,next: NextFunction)=> {
-    res.status(err.statusCode || 500).json({ error:err.message })
+app.use((err: Error | CustomError,req: Request,res: Response,next: NextFunction)=> {
+    if (err instanceof CustomError) {
+        return res.status(err.statusCode).json({ error:err.message })
+    } else {
+        return res.status(500).json({ error:err.message })
+    }
 })
 //FALTA MIDDLEWARES PARA MANEJAR ERRORES Y VALIDACIONES
 export default app

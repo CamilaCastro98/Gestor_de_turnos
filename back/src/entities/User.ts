@@ -21,10 +21,8 @@ export class User {
     @Column()
     email: string
 
-    @Column({
-        length: 50
-    })
-    birthdate: string
+    @Column()
+    birthdate: Date
 
     @Column()
     nDni: number

@@ -8,7 +8,7 @@ export class Appointment {
     id: number
 
     @Column()
-    date: string
+    date: Date
 
     @Column()
     time: string
