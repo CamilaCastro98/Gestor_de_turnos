@@ -9,7 +9,7 @@ appointmentsRouter.get("/",getAppointments) //funciona con SQL
 
 appointmentsRouter.get("/:id",getOneAppointment) //funciona con SQL
 
-appointmentsRouter.post("/schedule",validateDate,validateTime,createAppointment) //funciona con SQL
+appointmentsRouter.post("/schedule",validateDate,validateTime,createAppointment) //funciona con SQL - FALTA VERIFICAR SI EL TURNO YA EXISTE
 
 appointmentsRouter.put("/cancel/:id",cancelAppointment) //funciona con SQL
 

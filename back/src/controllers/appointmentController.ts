@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express"
 import { cancelAppointmentService, createAppointmentService, getAppointmentsService, getOneAppointmentService } from "../services/appointmentsServices"
 import { Appointment } from "../entities/Appointment"
 import CustomError from "../errors/CustomError"
+import { getUserByIdService } from "../services/usersServices"
 
 
 export const getAppointments = async (req: Request,res: Response) => {
@@ -25,13 +26,21 @@ export const getOneAppointment = async (req: Request,res: Response,next: NextFun
 }
 
 export const createAppointment = async (req: Request,res: Response,next: NextFunction) => {
+    console.log("llega al controlador")
     const { date,time,status,userId } = req.body
-    const newAppointment: Appointment | undefined = await createAppointmentService({date,time,status,userId})
-    if (newAppointment) res.status(201).json(newAppointment)
-    else {
+    const verifyUser = await getUserByIdService(userId)
+    if(verifyUser){
+        const newAppointment: Appointment | undefined = await createAppointmentService({date,time,status,userId})
+        if (newAppointment) res.status(201).json(newAppointment)
+        else {
+            const err = new CustomError("The appointment couldn't be created",404)
+            next(err)
+            }
+    } else {
         const err = new CustomError(`Can't create appoinmtent with userId ${userId}`,404)
         next(err)
     }
+    
 }
 
 export const cancelAppointment = async (req: Request,res: Response,next: NextFunction) => {

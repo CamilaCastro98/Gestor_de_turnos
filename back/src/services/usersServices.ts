@@ -8,6 +8,7 @@ export const getUsersService = async (): Promise<User[]> => {
   const users = await UserRepository.find({
     relations: {
       credentialsId: true,
+      history: true
     },
   });
   return users;
@@ -16,7 +17,12 @@ export const getUsersService = async (): Promise<User[]> => {
 export const getUserByIdService = async (
   userId: number
 ): Promise<User | null > => {
-  const user = await UserRepository.findOneBy({ id: userId });
+  const user = await UserRepository.findOne({
+    where: {id: userId},
+    relations: {
+      history: true
+    }
+  });
   return user
 };
 
