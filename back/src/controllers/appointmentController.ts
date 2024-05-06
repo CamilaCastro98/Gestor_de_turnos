@@ -27,10 +27,10 @@ export const getOneAppointment = async (req: Request,res: Response,next: NextFun
 
 export const createAppointment = async (req: Request,res: Response,next: NextFunction) => {
     console.log("llega al controlador")
-    const { date,time,status,userId } = req.body
+    const { date,time,userId } = req.body
     const verifyUser = await getUserByIdService(userId)
     if(verifyUser){
-        const newAppointment: Appointment | undefined = await createAppointmentService({date,time,status,userId})
+        const newAppointment: Appointment | undefined = await createAppointmentService({date,time,userId})
         if (newAppointment) res.status(201).json(newAppointment)
         else {
             const err = new CustomError("The appointment couldn't be created",404)

@@ -16,7 +16,7 @@ export const getOneAppointmentService = async (id:number): Promise<Appointment |
 }
 
 export const createAppointmentService = async (appointmentData: AppointmentDto): Promise<Appointment | undefined> => {
-    const {date,time,status,userId} = appointmentData
+    const {date,time,userId} = appointmentData
     const user = await getUserByIdService(userId)
     if(user) {
         const newAppointment: Appointment = await AppointmentRepository.create({
