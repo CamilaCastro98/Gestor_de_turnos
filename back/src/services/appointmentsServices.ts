@@ -1,5 +1,6 @@
 import AppointmentDto from "../dto/AppointmentDto"
 import { Appointment } from "../entities/Appointment"
+import { Status } from "../interfaces/IAppointment"
 import { AppointmentRepository } from "../repositories/AppointmentRepository"
 import { getUserByIdService } from "./usersServices"
 
@@ -21,7 +22,7 @@ export const createAppointmentService = async (appointmentData: AppointmentDto):
         const newAppointment: Appointment = await AppointmentRepository.create({
             date,
             time,
-            status,
+            status: Status.inProgress,
             userId
         })
         const results = await AppointmentRepository.save(newAppointment)
@@ -32,7 +33,7 @@ export const createAppointmentService = async (appointmentData: AppointmentDto):
 export const cancelAppointmentService = async (id:number): Promise<Appointment | undefined> => {
     const appointment: Appointment | null = await getOneAppointmentService(id)
     if(appointment){
-        appointment.status = "cancelled"
+        appointment.status = Status.cancelled
         await AppointmentRepository.save(appointment)
         return appointment
     }

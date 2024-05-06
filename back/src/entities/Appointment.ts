@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 import { User } from "./User"
+import { Status } from "../interfaces/IAppointment"
 
 @Entity()
 export class Appointment {
@@ -14,7 +15,7 @@ export class Appointment {
     time: string
 
     @Column()
-    status: string
+    status: Status
 
     @ManyToOne(()=> User,(user)=> user.history)
     userId: number

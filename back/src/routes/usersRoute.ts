@@ -31,7 +31,7 @@ usersRouter.post(
   registerUser
 ); //funciona con SQL
 
-usersRouter.post("/login", loginUser); //sin servicio aún
+usersRouter.post("/login", loginUser); //funciona con SQL
 
 usersRouter.delete("/:id", deleteUser); //funciona con SQL
 

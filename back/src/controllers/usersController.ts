@@ -24,7 +24,7 @@ export const registerUser = async (req: Request,res: Response): Promise<void> =>
     res.status(201).json(newUser)
 }
 
-export const loginUser = async (req: Request,res: Response) => {
+export const loginUser = async (req: Request,res: Response,next: NextFunction) => {
     const {username,password} = req.body
     const userId:number | undefined = await loginUserService(username,password)
     if (userId) {
@@ -33,6 +33,9 @@ export const loginUser = async (req: Request,res: Response) => {
             "login": true,
             user
         })
+    } else {
+        const err = new CustomError("Invalid credentials",404)
+        next(err)
     }
 }
 
