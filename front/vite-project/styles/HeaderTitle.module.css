@@ -1,5 +1,27 @@
 .container {
     position: absolute;
-    top: 50%;
-    left: 40%
+    top: 30%;
+    left: 30%;
+}
+
+.headerTitle {
+    font-size: 5vw;
+    font-weight: 600;
+    width: 100%;
+}
+
+.headerP {
+    font-size: 3vw;
+    padding: 1rem;
+}
+
+.headerButtons {
+    display: flex;
+    gap: 1rem;
+    padding-left: 12vw;
+}
+
+.login,.signup {
+    font-size: 2vw;
+    padding: 0.5rem;
 }

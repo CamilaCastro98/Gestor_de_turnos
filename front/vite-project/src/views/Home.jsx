@@ -1,11 +1,17 @@
 import Navbar from "../components/Navbar"
 import Header from "../components/Header"
+import Courses from "../components/Courses"
 
 const Home = () => {
     return (
         <>
-             <Navbar />
-             <Header />
+            <header>
+                <Navbar />
+                <Header />
+            </header>
+            <main>
+                <Courses/>
+            </main>
         </>
     )
 }
