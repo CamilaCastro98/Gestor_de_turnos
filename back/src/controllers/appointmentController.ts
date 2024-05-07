@@ -3,6 +3,7 @@ import { cancelAppointmentService, createAppointmentService, getAppointmentsServ
 import { Appointment } from "../entities/Appointment"
 import CustomError from "../errors/CustomError"
 import { getUserByIdService } from "../services/usersServices"
+import { Status } from "../interfaces/IAppointment"
 
 
 export const getAppointments = async (req: Request,res: Response) => {
