@@ -3,7 +3,7 @@ import styles from "../../styles/Navbar.module.css"
 const Navbar = () => {
     return (
         <nav>
-            <img src="" alt="logo" />
+            <img className={styles.logo} src="../src/assets/logo.png" alt="logo" />
             <div className={styles.navbarLinks}>
                 <a href="">About</a>
                 <a href="">Login</a>

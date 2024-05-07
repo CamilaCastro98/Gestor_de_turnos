@@ -1,8 +1,13 @@
+import HeaderTitle from "./HeaderTitle"
+import HeaderImg from "./HeaderImg"
+import styles from "../../styles/Header.module.css"
+
 const Header = () => {
     return (
-        <div>
-            <img src="../src/assets/gym.png" alt="headerImg" />
-        </div>
+    <div className={styles.container}>
+        <HeaderImg/>
+        <HeaderTitle/>
+    </div>
     )
 }
 
