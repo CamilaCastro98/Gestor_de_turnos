@@ -30,12 +30,14 @@ export const createAppointment = async (req: Request,res: Response,next: NextFun
     const { date,time,userId } = req.body
     const verifyUser = await getUserByIdService(userId)
     if(verifyUser){
+
         const newAppointment: Appointment | undefined = await createAppointmentService({date,time,userId})
         if (newAppointment) res.status(201).json(newAppointment)
         else {
             const err = new CustomError("The appointment couldn't be created",404)
             next(err)
             }
+            
     } else {
         const err = new CustomError(`Can't create appoinmtent with userId ${userId}`,404)
         next(err)
