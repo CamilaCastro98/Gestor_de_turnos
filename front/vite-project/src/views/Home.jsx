@@ -1,12 +1,10 @@
-import Navbar from "../components/Navbar"
-import Header from "../components/Header"
-import Courses from "../components/Courses"
+import Header from "../components/Header/Header"
+import Courses from "../components/Courses/Courses"
 
 const Home = () => {
     return (
         <>
             <header>
-                <Navbar />
                 <Header />
             </header>
             <main>

@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+.coursesTitle {
+    font-size: 3.5vw;
+}
+
 .cardList {
     display: flex;
+    gap: 1vw
 }

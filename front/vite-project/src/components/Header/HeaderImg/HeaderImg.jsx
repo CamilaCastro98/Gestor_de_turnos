@@ -1,4 +1,4 @@
-import styles from "../../styles/HeaderImg.module.css"
+import styles from "./HeaderImg.module.css"
 
 const HeaderImg = () => {
     return (

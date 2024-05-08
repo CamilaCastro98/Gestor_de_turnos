@@ -1,4 +1,4 @@
-import styles from "../../styles/HeaderTitle.module.css"
+import styles from "./HeaderTitle.module.css"
 
 const HeaderTitle = () => {
     return (

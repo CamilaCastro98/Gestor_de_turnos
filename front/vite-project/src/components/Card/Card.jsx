@@ -1,10 +1,10 @@
-import styles from "../../styles/Card.module.css"
+import styles from "./Card.module.css"
 
 const Card = () => {
     return (
         <div className={styles.cardContainer}>
-            <h2>CURSO</h2>
-            <img src="" alt="" />
+            <h2>COURSE</h2>
+            <img src="../src/assets/course.jpg" alt="" />
         </div>
     )
 }
