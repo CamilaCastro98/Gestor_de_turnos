@@ -1,10 +1,10 @@
 import styles from "./Card.module.css"
 
-const Card = () => {
+const Card = ({title,description,img}) => {
     return (
         <div className={styles.cardContainer}>
-            <h2>COURSE</h2>
-            <img src="../src/assets/course.jpg" alt="" />
+            <h2>{title}</h2>
+            <img src={img} alt={title} />
         </div>
     )
 }
