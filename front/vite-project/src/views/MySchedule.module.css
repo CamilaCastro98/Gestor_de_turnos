@@ -1,0 +1,10 @@
+.appsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: antiquewhite;
+}
+.appsContainer h1 {
+    padding-top: 20vw;
+    font-size: 4vw;
+}

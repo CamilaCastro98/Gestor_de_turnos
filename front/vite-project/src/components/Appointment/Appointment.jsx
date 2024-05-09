@@ -1,9 +1,9 @@
-const Appointment = ({date,time,status}) => {
+const Appointment = ({date,time,status,id}) => {
     return (
-        <div>
-            <p>Date: {date}</p>
-            <p>Time: {time}</p>
-            <p>Status: {status}</p>
+        <div key={id}>
+            <span>Date: {date}</span>
+            <span>Time: {time}</span>
+            <span>Status: {status}</span>
 
         </div>
     )
