@@ -1,6 +1,6 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 import { User } from "./User"
-import { Status } from "../interfaces/IAppointment"
+import { Status,Service } from "../interfaces/IAppointment"
 
 @Entity()
 export class Appointment {
@@ -15,8 +15,12 @@ export class Appointment {
     time: string
 
     @Column()
+    service: Service
+
+    @Column()
     status: Status
 
     @ManyToOne(()=> User,(user)=> user.history)
+    @JoinColumn({ name: "userId" })
     userId: number
 }

@@ -9,7 +9,7 @@ const duplicateAppValidate = async (req: Request,res: Response,next: NextFunctio
     if (appoinmtents) {
         for (const turn of appoinmtents) {
             if (turn.time === time) {
-                const err = new CustomError("This appointment already exists",400)
+                const err = new CustomError("The user has already made an appointment at this date and time",400)
                 next(err)
             }
         }

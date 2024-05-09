@@ -1,6 +1,13 @@
 export enum Status {
-    inProgress = "IN PROGRESS",
+    inProgress = "ACTIVE",
     cancelled = "CANCELLED"
+}
+
+export enum Service {
+    yoga = "Yoga",
+    strength = "Strength Training",
+    outdoor = "Outdoor Adventure",
+    free = "Free Workout"
 }
 
 interface IAppointment {
@@ -8,5 +15,6 @@ interface IAppointment {
     date: string,
     time: string,
     userId: number,
+    service: Service,
     status: Status
 }
