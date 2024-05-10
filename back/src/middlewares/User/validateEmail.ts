@@ -10,11 +10,13 @@ const validateEmail = async (req: Request,res: Response,next: NextFunction) => {
         const err = new CustomError("Incorrect email",400)
             next(err)
     }
-    const emails = await getUsersService()
-    if(emails.includes(email)){
-        const err = new CustomError("This mail is already in use",400)
+    const users = await getUsersService()
+    for (const user of users) {
+        if (user.email.includes(email)) {
+            const err = new CustomError("This mail is already in use",400)
             next(err)
-    } else next()
+        }
+    } next()
 }
 
 export default validateEmail

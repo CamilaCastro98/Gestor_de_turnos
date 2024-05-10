@@ -52,8 +52,8 @@ export const registerUserService = async (userData: UserDto): Promise<User> => {
   return results;
 };
 
-export const loginUserService = async (username: string,password: string): Promise<number | undefined> => {
-      const verifyCredentials: number | undefined = await validateCredentialsService(username,password)
+export const loginUserService = async (username: string,password: string): Promise<number | undefined | string> => {
+      const verifyCredentials: number | undefined | string = await validateCredentialsService(username,password)
       return verifyCredentials
   }
 

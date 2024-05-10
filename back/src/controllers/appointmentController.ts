@@ -27,7 +27,6 @@ export const getOneAppointment = async (req: Request,res: Response,next: NextFun
 }
 
 export const createAppointment = async (req: Request,res: Response,next: NextFunction) => {
-    console.log("llega al controlador")
     const { date,time,userId,service } = req.body
     const verifyUser = await getUserByIdService(userId)
     if(verifyUser){

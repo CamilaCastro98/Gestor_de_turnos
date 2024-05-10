@@ -16,13 +16,13 @@ export const registerCredentialsService = async (
 export const validateCredentialsService = async (
   username: string,
   password: string
-): Promise<number | undefined> => {
+): Promise<number | undefined | string> => {
   const allCredentials: Credential[] = await CredentialRepository.find();
-  for (let i = 0; i < allCredentials.length; i++) {
-    if (allCredentials[i].username === username) {
-      if (allCredentials[i].password === password) {
-        return allCredentials[i].id;
-      }
+  for (const credentials of allCredentials) {
+    if (credentials.username === username) {
+      if (credentials.password === password) {
+        return credentials.id;
+      } else return ("wrong password")
     }
   }
 };

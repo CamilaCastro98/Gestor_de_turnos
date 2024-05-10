@@ -3,10 +3,10 @@ import CustomError from "../../errors/CustomError"
 
 const validatePP = (req: Request,res: Response,next: NextFunction) => {
     const {profilePicture} = req.body
-    const regexURL = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/
+    const regexImg = /\.(jpg|jpeg|png)$/i
 
-    if (!regexURL.test(profilePicture)) {
-        const err = new CustomError("Incorrect URL",400)
+    if (!regexImg.test(profilePicture)) {
+        const err = new CustomError("Invalid extention for profile picture (only jpg,jpeg and png accepted)j",400)
             next(err)
     } else next()
 }

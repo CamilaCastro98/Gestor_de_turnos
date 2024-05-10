@@ -26,15 +26,19 @@ export const registerUser = async (req: Request,res: Response): Promise<void> =>
 
 export const loginUser = async (req: Request,res: Response,next: NextFunction) => {
     const {username,password} = req.body
-    const userId:number | undefined = await loginUserService(username,password)
-    if (userId) {
+    const userId:number | undefined | string = await loginUserService(username,password)
+    if (typeof userId === "string") {
+        const err = new CustomError("Invalid password",404)
+        next(err)
+    }
+    if (userId && typeof userId === "number") {
         const user = await getUserByIdService(userId)
         res.status(200).json({
             "login": true,
             user
         })
     } else {
-        const err = new CustomError("Invalid credentials",404)
+        const err = new CustomError("Invalid username",404)
         next(err)
     }
 }
