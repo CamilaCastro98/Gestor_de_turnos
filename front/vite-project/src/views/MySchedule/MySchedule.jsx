@@ -1,5 +1,5 @@
-import {mySchedule} from "../helpers/mySchedule"
-import Appointment from "../components/Appointment/Appointment"
+import {mySchedule} from "../../helpers/mySchedule"
+import Appointment from "../../components/Appointment/Appointment"
 import {useEffect, useState} from 'react'
 import styles from "./MySchedule.module.css"
 import axios from "axios"
