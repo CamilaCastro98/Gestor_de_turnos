@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express"
 import CustomError from "../../errors/CustomError"
 
 const validateTypes = (req: Request,res: Response,next: NextFunction) => {
-    const { name,email,profilePicture,birthdate, nDni, username, password } = req.body
+    const { name,email,birthdate, nDni, username, password } = req.body
     const incorrectTypes:string[] = []
 
     if(typeof name !== "string"){
@@ -10,9 +10,6 @@ const validateTypes = (req: Request,res: Response,next: NextFunction) => {
     }
     if(typeof email !== "string"){
         incorrectTypes.push(`email waits for a string and recieved ${typeof email} instead`)
-    }
-    if(typeof profilePicture !== "string"){
-        incorrectTypes.push(`profilePicture waits for a string and recieved ${typeof profilePicture} instead`)
     }
     if(typeof birthdate !== "string"){
         const err = new CustomError(`birthdate waits for a string and recieved ${typeof birthdate} instead`,400)

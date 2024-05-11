@@ -30,7 +30,6 @@ export const registerUserService = async (userData: UserDto): Promise<User> => {
   const {
     name,
     email,
-    profilePicture,
     birthdate,
     nDni,
     username,
@@ -41,7 +40,7 @@ export const registerUserService = async (userData: UserDto): Promise<User> => {
   //Creo user con referencia de las credenciales que me acaba de retornar
   const newUser = await UserRepository.create({
     name,
-    profilePicture,
+    profilePicture: "",
     email,
     birthdate,
     nDni,

@@ -1,6 +1,5 @@
 interface UserDto {
     name: string,
-    profilePicture: string,
     email: string,
     birthdate: Date,
     nDni: number,

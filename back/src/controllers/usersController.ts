@@ -2,6 +2,8 @@ import { NextFunction, Request, Response } from "express"
 import { getUsersService,registerUserService,deleteUsersService, getUserByIdService, loginUserService } from "../services/usersServices"
 import { User } from "../entities/User"
 import CustomError from "../errors/CustomError"
+import { profile } from "console"
+import UserDto from "../dto/UserDto"
 
 export const getUsers = async (req: Request,res: Response): Promise<void> => {
     const users: User[] = await getUsersService()
@@ -19,8 +21,9 @@ export const getUserById = async (req: Request,res: Response,next: NextFunction)
     
 }
 export const registerUser = async (req: Request,res: Response): Promise<void> => {
-    const { name,email,profilePicture,birthdate, nDni, username, password } = req.body
-    const newUser: User = await registerUserService({name,email,profilePicture, birthdate, nDni, username,password})
+    const { name,email,birthdate, nDni, username, password } = req.body
+    const newUserDto: UserDto = {name,email,birthdate,nDni,username,password}
+    const newUser: User = await registerUserService(newUserDto)
     res.status(201).json(newUser)
 }
 

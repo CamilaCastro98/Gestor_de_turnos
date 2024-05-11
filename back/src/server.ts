@@ -19,5 +19,5 @@ app.use((err: Error | CustomError,req: Request,res: Response,next: NextFunction)
         return res.status(500).json({ error:err.message })
     }
 })
-//FALTA MIDDLEWARES PARA MANEJAR ERRORES Y VALIDACIONES
+
 export default app
