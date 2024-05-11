@@ -1,25 +1,22 @@
 import axios from "axios"
 import {Formik,Field,Form,ErrorMessage} from "formik"
-import { useState } from "react"
+import validateLogin from "../../helpers/validations/login"
 
 
 const Login = () => {
-   const [ userLog, setUserLog ] = useState({
-        username: "",
-        password: ""
-    })
 
-    const handleInputChange = (event) => {
-        const {name,value} = event.target
-        setUserLog({...userLog, [name]:value})
-    }
-
-    const sendRequest = async () => {
+    const sendRequest = async (values) => {
         try {
-           await axios.post("http://localhost:3000/users/login",userLog)
+           await axios.post("http://localhost:3000/users/login",values)
            alert("Your are logged in!")
         } catch(error) {
-                alert("User couldn't be logged in")
+            if (error.response && error.response.data && error.response.data.error) {
+                alert("Error: " + error.response.data.error);
+            } else if (error.message) {
+                alert("Error: " + error.message); 
+            } else {
+                alert("An unexpected error occurred"); 
+            }
         }
     }
 
@@ -29,21 +26,18 @@ const Login = () => {
                 username: "",
                 password: ""
             }}
+            validate={validateLogin}
             onSubmit={sendRequest}>
                 <Form>
 
                     <label>username</label>
-                    <Field  onChange={handleInputChange}
-                            value={userLog.username}
-                            type="text" 
+                    <Field  type="text" 
                             name="username" 
                             placeholder="Enter username" ></Field>
                     <ErrorMessage name="username" ></ErrorMessage>
 
                     <label>password</label>
-                    <Field  onChange={handleInputChange}
-                            value={userLog.password}
-                            type="password" 
+                    <Field  type="password" 
                             name="password" 
                             placeholder="Enter password" ></Field>
                     <ErrorMessage name="password" ></ErrorMessage>
