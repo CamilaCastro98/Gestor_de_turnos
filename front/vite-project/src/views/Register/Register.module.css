@@ -3,6 +3,7 @@ body {
 }
 
 form {
+    padding-top: 20vw;
     display: flex;
     flex-direction: column;
     width: 40%;

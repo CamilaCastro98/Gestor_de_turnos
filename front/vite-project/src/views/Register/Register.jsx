@@ -2,13 +2,16 @@ import axios from "axios"
 import {Formik,Field,Form,ErrorMessage} from "formik"
 import validations from "../../helpers/validations/register"
 import styles from "./Register.module.css"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
 
-    const sendRequest = async (values) => {
+    const navigate = useNavigate()
+
+    const handleOnSubmit = async (values) => {
         try {
            await axios.post("http://localhost:3000/users/register",values)
-           alert("User created succesfully!")
+           navigate("/home")
         } catch(error) {
                 if (error.response && error.response.data && error.response.data.error) {
                         alert("Error: " + error.response.data.error);
@@ -32,7 +35,7 @@ const Register = () => {
             }}
             validate={validations}
             onSubmit={(values, { setSubmitting }) => {
-                sendRequest(values);
+                handleOnSubmit(values);
                 setSubmitting(false);
               }}>
                 <Form className="styles.form">
