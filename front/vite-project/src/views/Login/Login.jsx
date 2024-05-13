@@ -12,7 +12,7 @@ const Login = () => {
         try {
            await axios.post("http://localhost:3000/users/login",values)
            alert("Your are logged in!")
-           navigate("/home")
+           navigate("/")
         } catch(error) {
             if (error.response && error.response.data && error.response.data.error) {
                 alert("Error: " + error.response.data.error);

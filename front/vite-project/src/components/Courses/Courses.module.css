@@ -2,12 +2,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3vw;
+    margin-top: 6vw;
+    margin-bottom:12vw
 }
 
 .coursesTitle {
-    font-size: 3.5vw;
-    margin-bottom: 2vw;
+    font-size: 4vw;
+    margin-bottom: 4vw;
+    color: rgb(173, 165, 158);
+    text-align: center;
+    font-weight: 500;
+    line-height: 4.5vw;
+}
+
+.coursesTitle span {
+    color: #DC602E
 }
 
 .cardList {

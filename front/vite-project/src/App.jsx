@@ -17,7 +17,7 @@ function App() {
     <>
       {location.pathname === "/register" || location.pathname === "/login" ? null : < Navbar/>}
       <Routes>
-        <Route path="/home" element={< Home />}></Route>
+        <Route path="/" element={< Home />}></Route>
         <Route path="/about" element={< About />}></Route>
         <Route path="/contact" element={< Contact />}></Route>
         <Route path="/schedule" element={< MySchedule />}></Route>

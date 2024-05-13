@@ -5,22 +5,23 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 1rem 0 1rem 0;
+    background-color: #0C0C0C;
+    padding: 1vw 0 1vw 0;
+    border-bottom: 2px solid rgb(241,232,224);
 }
 
 .logo {
-    width: 8rem;
+    width: 8vw;
     height: auto;
-    padding-left: 1rem;
+    padding-left: 1vw;
 }
 
 .navbarLinks {
     display: flex;
-    gap: 1rem;
-    padding-right: 1rem;
+    gap: 1vw;
+    padding-right: 1vw;
 }
 
 a {
-    color: black;
+    color:rgb(241,232,224);
 }

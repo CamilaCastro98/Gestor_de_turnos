@@ -1,13 +1,14 @@
 import styles from "./HeaderTitle.module.css"
+import { Link } from "react-router-dom"
 
 const HeaderTitle = () => {
     return (
         <div className={styles.container}>
-             <h1 className={styles.headerTitle} >Turn up the fitness <br /> Schedule your success</h1>
-             <p className={styles.headerP}>Your only limit is you. Start now!</p>
+             <h1 className={styles.headerTitle} >Turn up the <span>fitness</span> <br /> <span>Schedule</span> your success</h1>
+             <p className={styles.headerP}>Your agenda, your time, your way</p>
              <div className={styles.headerButtons}>
-                <button className={styles.login}>Login</button>
-                <button className={styles.signup}>Sign Up</button>
+                <Link to="/login" className={styles.login}>Login</Link>
+                <p>Not a member yet? <span><Link to="/register" className={styles.signup}>Sign Up</Link></span></p>
              </div>
 
         </div>

@@ -1,27 +1,78 @@
 .container {
     position: absolute;
-    top: 30%;
-    left: 27%;
+    top: 20%;
+    left: 20%;
+    background-color: rgba(241,232,224,0.7);
+    padding: 6vw 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .headerTitle {
     font-size: 5vw;
-    font-weight: 600;
+    font-weight: 700;
     width: 100%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.headerTitle span {
+    color: #DC602E;
+    text-shadow:
+    2px 2px 2px #000,
+    -2px 2px 0px #000,
+    -2px -2px 0px #000,
+    2px -2px 0px #000;
 }
 
 .headerP {
     font-size: 3vw;
-    padding: 1rem;
+    padding: 2.5vw;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)
 }
 
 .headerButtons {
     display: flex;
-    gap: 1rem;
-    padding-left: 12vw;
+    flex-direction: column;
+    gap: 1.5vw;
+    width: 30%;
 }
 
-.login,.signup {
+.login {
     font-size: 2vw;
-    padding: 0.5rem;
+    padding: 1vw 2vw;
+    background-color: #000;
+    color:aliceblue;
+    border: 3px solid #000;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.login:hover {
+    background-color:#DC602E;
+    color: #000;
+}
+
+.login:active {
+    background-color: #000;
+    color:#DC602E;
+    border-color: #DC602E;
+}
+
+.headerButtons p {
+    font-weight: 400;
+}
+
+.signup {
+    color:#DC602E;
+    font-weight: 600;
+}
+
+.signup:hover {
+    text-decoration: underline;
+}
+
+.signup:active {
+    color:#000
 }

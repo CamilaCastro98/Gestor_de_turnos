@@ -11,7 +11,7 @@ const Register = () => {
     const handleOnSubmit = async (values) => {
         try {
            await axios.post("http://localhost:3000/users/register",values)
-           navigate("/home")
+           navigate("/")
         } catch(error) {
                 if (error.response && error.response.data && error.response.data.error) {
                         alert("Error: " + error.response.data.error);
