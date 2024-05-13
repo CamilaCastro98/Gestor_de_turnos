@@ -18,10 +18,28 @@ nav {
 
 .navbarLinks {
     display: flex;
-    gap: 1vw;
+    gap: 2vw;
     padding-right: 1vw;
+    align-items: center;
 }
 
-a {
+nav a {
     color:rgb(241,232,224);
+    font-weight: 300;
+    font-size: 1vw;
+}
+
+nav a:last-child {
+    border: 2px solid rgb(241,232,224);
+    padding: 0.5vw;
+    font-weight: 500;
+}
+
+nav a:last-child:hover {
+    background-color: #DC602E;
+    color: #0C0C0C;
+}
+
+a:hover {
+    color: #DC602E
 }
