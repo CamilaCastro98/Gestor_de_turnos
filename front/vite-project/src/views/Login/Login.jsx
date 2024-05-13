@@ -24,7 +24,13 @@ const Login = () => {
         }
     }
 
+    const handleOnCancel = () => {
+        navigate("/")
+    }
+
     return (
+        <div className="container mt-5 mb-5">
+            <h1 className="mb-5">Login!</h1>
             <Formik
             initialValues={{
                 username: "",
@@ -32,23 +38,30 @@ const Login = () => {
             }}
             validate={validateLogin}
             onSubmit={handleOnSubmit}>
-                <Form>
-
-                    <label>username</label>
+                <Form className="form">
+                <div className="form-group mb-3">
+                    <label className="mb-2">Username:</label>
                     <Field  type="text" 
                             name="username" 
-                            placeholder="Enter username" ></Field>
-                    <ErrorMessage name="username" ></ErrorMessage>
-
-                    <label>password</label>
+                            placeholder="Enter username" 
+                            className="form-control" ></Field>
+                    <ErrorMessage name="username" className="text-danger" component="div" ></ErrorMessage>
+                </div>
+                <div className="form-group mb-3">
+                    <label className="mb-2">Password:</label>
                     <Field  type="password" 
                             name="password" 
-                            placeholder="Enter password" ></Field>
-                    <ErrorMessage name="password" ></ErrorMessage>
-
-                    <button type="submit">SUBMIT</button>
+                            placeholder="Enter password" 
+                            className="form-control" ></Field>
+                    <ErrorMessage name="password" className="text-danger" component="div"></ErrorMessage>
+                </div>
+                <div className="d-flex mt-4 justify-content-center">
+                        <button onClick={handleOnCancel} className="btn btn-lg btn-outline-secondary me-2" type="button">CANCEL</button>
+                        <button className="btn btn-lg btn-secondary" type="submit">SUBMIT</button>
+                </div>
                 </Form>
             </Formik>
+        </div>
     ) 
     
 }

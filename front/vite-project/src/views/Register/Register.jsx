@@ -1,8 +1,9 @@
 import axios from "axios"
 import {Formik,Field,Form,ErrorMessage} from "formik"
 import validations from "../../helpers/validations/register"
-import styles from "./Register.module.css"
+import "./Register.css"
 import { useNavigate } from "react-router-dom"
+
 
 const Register = () => {
 
@@ -23,7 +24,13 @@ const Register = () => {
         }
     }
 
+    const handleOnCancel = () => {
+        navigate("/")
+    }
+
     return (
+        <div className="container mt-5 mb-5">
+                <h1 className="mb-5">Register here!</h1>
             <Formik
             initialValues={{
                 name: "",
@@ -38,46 +45,65 @@ const Register = () => {
                 handleOnSubmit(values);
                 setSubmitting(false);
               }}>
-                <Form className="styles.form">
-                    <label>name</label>
+                <Form className="form">
+                <div className="form-group mb-3">
+                    <label className="mb-2">Name:</label>
                     <Field  type="text" 
                             name="name" 
-                            placeholder="Your name" ></Field>
-                    <ErrorMessage name="name" ></ErrorMessage>
-
-                    <label>email</label>
+                            placeholder="Jane Doe"
+                            className="form-control" ></Field>
+                    <ErrorMessage name="name" className="text-danger" component="div"></ErrorMessage>
+                </div>
+                <div className="form-group mb-3">
+                    <label className="mb-2">Email:</label>
                     <Field  type="text" 
                             name="email" 
-                            placeholder="email@example.com" ></Field>
-                    <ErrorMessage name="email" ></ErrorMessage>
-
-                    <label>birthdate</label>
+                            placeholder="email@example.com" 
+                            className="form-control"></Field>
+                    <ErrorMessage name="email" className="text-danger" component="div"></ErrorMessage>
+                </div>
+                <div className="form-group mb-3">
+                    <label className="mb-2">Birthdate:</label>
                     <Field  type="text" 
                             name="birthdate" 
-                            placeholder="YYYY-MM-DD" ></Field>
-                    <ErrorMessage name="birthdate" ></ErrorMessage>
-
-                    <label>dni</label>
+                            placeholder="YYYY-MM-DD"
+                            className="form-control" ></Field>
+                    <ErrorMessage name="birthdate" className="text-danger" component="div"></ErrorMessage>
+                </div>
+                <div className="form-group mb-3">
+                    <label className="mb-2">Dni:</label>
                     <Field  type="number" 
                             name="nDni" 
-                            placeholder="12345678" ></Field>
-                    <ErrorMessage name="nDni" ></ErrorMessage>
-
-                    <label>username</label>
+                            placeholder="12345678" 
+                            className="form-control"></Field>
+                    <ErrorMessage name="nDni" className="text-danger" component="div"></ErrorMessage>
+                </div>
+                <div className="form-group mb-3">
+                    <label className="mb-2">Username:</label>
                     <Field  type="text" 
                             name="username" 
-                            placeholder="user123" ></Field>
-                    <ErrorMessage name="username" ></ErrorMessage>
-
-                    <label>password</label>
+                            placeholder="user123" 
+                            className="form-control"></Field>
+                    <ErrorMessage name="username" className="text-danger" component="div"></ErrorMessage>
+                </div>
+                <div className="form-group mb-3">
+                    <label className="mb-2">Password:</label>
                     <Field  type="password" 
                             name="password" 
-                            placeholder="asdf123" ></Field>
-                    <ErrorMessage name="password" ></ErrorMessage>
-
-                    <button type="submit">SUBMIT</button>
+                            placeholder="*******" 
+                            className="form-control"></Field>
+                    <ErrorMessage name="password" className="text-danger" component="div"></ErrorMessage>
+                </div>
+                <div className="d-flex mt-4 justify-content-center">
+                        <button onClick={handleOnCancel} className="btn btn-lg btn-outline-secondary me-2" type="button">CANCEL</button>
+                        <button className="btn btn-lg btn-secondary" type="submit">SUBMIT</button>
+                </div>
+                <div className="text-center mt-3">
+                         <p>Already have an account? <a href="/login">Login</a></p>
+                </div>
                 </Form>
             </Formik>
+        </div>
     ) 
     
 }

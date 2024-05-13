@@ -1,6 +1,5 @@
 import Header from "../../components/Header/Header"
 import Courses from "../../components/Courses/Courses"
-import Footer from "../../components/Footer/Footer"
 
 const Home = () => {
     return (
@@ -11,9 +10,6 @@ const Home = () => {
             <main>
                 <Courses/>
             </main>
-            <footer>
-                <Footer/>
-            </footer>
         </>
     )
 }

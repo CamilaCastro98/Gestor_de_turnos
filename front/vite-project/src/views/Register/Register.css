@@ -1,0 +1,53 @@
+.container {
+    width: 80%;
+    background-color: #DC602E;
+    padding: 2.5vw 4vw 6vw 4vw;
+    border-radius: 5px;
+}
+
+.form {
+    background-color: rgba(241,232,224,0.7);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 4vw;
+}
+
+.container h1 {
+    font-size: 4vw;
+    font-weight: 600;
+    width: 100%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.form div label {
+    text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
+}
+
+.form a {
+    color: #DC602E;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.form a:hover {
+    color:black
+}
+
+.btn {
+    border: 3px solid black;
+}
+
+.btn-secondary {
+    background-color: black;
+}
+
+.btn-secondary:hover {
+    background-color: #DC602E;
+    color: black;
+    border-color: black;
+}
+
+.btn-outline-secondary {
+    color: black
+}
+

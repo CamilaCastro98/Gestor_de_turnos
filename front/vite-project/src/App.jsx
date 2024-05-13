@@ -1,5 +1,6 @@
 import Home from './views/Home/Home'
-import styles from "../styles/App.module.css"
+import "../styles/App.module.css"
+import Footer from "./components/Footer/Footer"
 import Navbar from './components/Navbar/Navbar'
 import MySchedule from './views/MySchedule/MySchedule'
 import Register from './views/Register/Register'
@@ -24,6 +25,9 @@ function App() {
         <Route path="/register" element={< Register />}></Route>
         <Route path="/login" element={< Login />}></Route>
       </Routes>
+      <footer>
+         <Footer/>
+      </footer>
     </>
   )
   
