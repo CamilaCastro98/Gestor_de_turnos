@@ -64,7 +64,7 @@ const Register = () => {
                 </div>
                 <div className="form-group mb-3">
                     <label className="mb-2">Birthdate:</label>
-                    <Field  type="text" 
+                    <Field  type="date" 
                             name="birthdate" 
                             placeholder="YYYY-MM-DD"
                             className="form-control" ></Field>

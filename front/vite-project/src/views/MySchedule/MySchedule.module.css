@@ -1,10 +1,110 @@
+.scheduleContainer {
+    position: relative;
+}
+
 .appsContainer {
     display: flex;
     flex-direction: column;
+    width: 70%;
+    height: 95vh;
+    overflow: scroll;
+    color: black;
+    position: absolute;
+    top: 20%;
+    left: 16%;
+    background-color: rgba(241,232,224,0.7);
+    padding-bottom: 4vw;
+}
+
+.title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
-    color: antiquewhite;
+    padding: 1.5vw;
 }
 .appsContainer h1 {
-    padding-top: 20vw;
-    font-size: 4vw;
+    font-size: 3vw;
+    font-weight: 300;
+    color: #FFFFFF
+}
+
+.newApp {
+    padding: 1.5vw 2.5vw;
+    background-color: #DC602E;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF
+}
+
+.newApp:hover {
+    background-color: black;
+}
+
+.newApp:active {
+    color:#DC602E
+}
+
+.appsContainer hr {
+    border: 1px solid #ffffff;
+    width: 90%;
+    margin-left: 3.5vw;
+}
+
+.appsContainer ul {
+    display: flex;
+    gap: 7.7vw;
+    margin: 0;
+    margin-left: 3vw;
+}
+
+.appsContainer ul li {
+    font-size: 2vw;
+    color: #FFFFFF;
+}
+.scheduleImg {
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    filter: brightness(60%);
+}
+
+.appData {
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+.disableForm {
+    display:none
+}
+
+.enableForm {
+    display:block;
+}
+
+.newAppContainer {
+    display: flex;
+    margin-top: 1vw;
+    height: 5vh;
+    padding-left: 1vw;
+}
+
+.newAppContainer button {
+    margin-left: 1vw;
+    padding: 0 1vw;
+    border-radius: 5px;
+}
+
+.cancelNew {
+    border: 2px solid black;
+    background-color: transparent;
+    color: black
+}
+
+.cancelNew:hover {
+    color: #DC602E;
+    border-color:#DC602E
 }
