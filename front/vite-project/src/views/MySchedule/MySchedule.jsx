@@ -7,6 +7,7 @@ import NewAppointment from "../../components/newAppointment/NewAppointment"
 
 const MySchedule = () => {
     const [appointments, setAppointments] = useState([])
+    const [update, setUpdate] = useState(0)
     const [formVisibility,setFormVisibility] = useState(styles.disableForm)
     const userId = 1
 
@@ -15,7 +16,7 @@ const MySchedule = () => {
             const filteredAppointments = res.data.filter(appointment => appointment.userId.id === userId)
             setAppointments(filteredAppointments)
         })
-    },[])
+    },[update])
 
     const handleNewApp = () => {
         setFormVisibility(styles.enableForm)
@@ -24,6 +25,10 @@ const MySchedule = () => {
     const handleCancelNewApp = () => {
         setFormVisibility(styles.disableForm)
     }
+
+    const handleUpdate = (data) => {
+        setUpdate(data)
+      }
 
     return (
         <div className={styles.scheduleContainer}>
@@ -43,7 +48,7 @@ const MySchedule = () => {
                 </ul>
                 <div className={formVisibility}>
                     <div className={styles.newAppContainer}>
-                        < NewAppointment />
+                        < NewAppointment onData={handleUpdate} />
                          <button className={styles.cancelNew} onClick={handleCancelNewApp}>Cancel</button>
                     </div>
                 </div>

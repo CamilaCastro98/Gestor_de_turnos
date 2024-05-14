@@ -3,12 +3,17 @@ import styles from "./NewAppointment.module.css"
 import axios from "axios"
 
 
-const NewAppointment = () => {
+const NewAppointment = ({ onData }) => {
 
-const handleOnSubmit = async(values) => {
-    try {
+    const sendUpdate = (id) => {
+        onData(id);
+      }
+
+    const handleOnSubmit = async(values) => {
+        try {
             await axios.post("http://localhost:3000/appointments/schedule",{...values,userId:1})
-    } catch(error) {
+            sendUpdate(values.id)
+        } catch(error) {
             if (error.response && error.response.data && error.response.data.error) {
                 alert("Error: " + error.response.data.error);
             } else if (error.message) {
