@@ -2,12 +2,12 @@ import {Formik,Field,Form,ErrorMessage} from "formik"
 import styles from "./NewAppointment.module.css"
 import axios from "axios"
 import { useSelector } from "react-redux"
-import { selectUser } from "../../redux/reducer"
+import { selectUserId } from "../../redux/reducer"
 
 
 const NewAppointment = ({ onData }) => {
 
-    const userLogged = useSelector(selectUser)
+    const userLogged = useSelector(selectUserId)
 
     const sendUpdate = (id) => {
         onData(id);

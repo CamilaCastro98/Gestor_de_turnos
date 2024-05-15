@@ -4,20 +4,21 @@ import validateLogin from "../../helpers/validations/login"
 import { useNavigate } from "react-router-dom"
 import { useDispatch,useSelector } from "react-redux"
 import { login } from "../../redux/reducer"
-import { selectUser } from "../../redux/reducer"
+import { selectUserId } from "../../redux/reducer"
 import { useEffect } from "react"
  
 const Login = () => {
 
     const navigate = useNavigate()
-    const userLogged = useSelector(selectUser)
+    const userLogged = useSelector(selectUserId)
     const dispatch = useDispatch()
 
     const handleOnSubmit = async (values) => {
         try {
            await axios.post("http://localhost:3000/users/login",values).then((res)=> {
-            dispatch(login(res.data.user.id))
+            dispatch(login(res.data.user))
             navigate("/")
+            console.log(userLogged)
            })
         } catch(error) {
             if (error.response && error.response.data && error.response.data.error) {

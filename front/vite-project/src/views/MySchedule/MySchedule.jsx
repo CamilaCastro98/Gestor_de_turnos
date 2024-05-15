@@ -4,23 +4,22 @@ import {useEffect, useState} from 'react'
 import styles from "./MySchedule.module.css"
 import axios from "axios"
 import NewAppointment from "../../components/newAppointment/NewAppointment"
-import { useSelector } from "react-redux"
-import { selectUser } from "../../redux/reducer"
+import { useSelector, useDispatch } from "react-redux"
+import { getAppointments, selectUserId } from "../../redux/reducer"
 
 const MySchedule = () => {
     const [appointments, setAppointments] = useState([])
     const [update, setUpdate] = useState(0)
     const [formVisibility,setFormVisibility] = useState(styles.disableForm)
-    const userLogged = useSelector(selectUser)
+    const userLogged = useSelector(selectUserId)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (userLogged) {
-            axios.get("http://localhost:3000/appointments")
+            axios.get(`http://localhost:3000/appointments/schedule/${userLogged}`)
                 .then((res) => {
-                    const filteredAppointments = res.data.filter(
-                        appointment => appointment.userId.id === userLogged
-                    );
-                    setAppointments(filteredAppointments);
+                    setAppointments(res.data)
+                    dispatch(getAppointments(res.data))
                 })
                 .catch((error) => {
                     console.error("Error fetching appointments:", error);

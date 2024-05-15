@@ -10,12 +10,12 @@ import Contact from './views/Contact/Contact'
 import { Routes,Route } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from "react-redux"
-import { selectUser } from "../src/redux/reducer"
+import { selectUserId } from "../src/redux/reducer"
 
 function App() {
 
   const location = useLocation()
-  const userLogged = useSelector(selectUser)
+  const userLogged = useSelector(selectUserId)
 
   return (
     <>

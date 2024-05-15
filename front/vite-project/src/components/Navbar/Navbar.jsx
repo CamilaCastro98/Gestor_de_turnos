@@ -1,11 +1,11 @@
 import styles from "./Navbar.module.css"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { selectUser } from "../../redux/reducer"
+import { selectUserId } from "../../redux/reducer"
 
 const Navbar = () => {
 
-    const userLogged = useSelector(selectUser)
+    const userLogged = useSelector(selectUserId)
 
     return (
         <nav>
@@ -14,8 +14,8 @@ const Navbar = () => {
                 <Link to="/about">About Us</Link>
                 <Link to="/contact">Contact Us</Link>
             {userLogged && <Link to="/schedule">My Schedule</Link>}
-                <Link to="/login">Login</Link>
-                <Link to="/register">Sign Up</Link>
+               {!userLogged && <Link to="/login">Login</Link>}
+                {!userLogged && <Link to="/register" className={styles.register}>Sign Up</Link>}
             </div>
         </nav>
     )

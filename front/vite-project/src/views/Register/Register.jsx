@@ -3,15 +3,22 @@ import {Formik,Field,Form,ErrorMessage} from "formik"
 import validations from "../../helpers/validations/register"
 import "./Register.css"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { login } from "../../redux/reducer"
 
 
 const Register = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const handleOnSubmit = async (values) => {
         try {
            await axios.post("http://localhost:3000/users/register",values)
+           await axios.post("http://localhost:3000/users/login",{ username: values.username, password: values.password }).then((res)=> {
+            dispatch(login(res.data.user))
+            navigate("/")
+           })
            navigate("/")
         } catch(error) {
                 if (error.response && error.response.data && error.response.data.error) {
