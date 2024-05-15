@@ -18,9 +18,9 @@ export class Appointment {
     service: Service
 
     @Column()
-    status: Status
+    state: Status
 
-    @ManyToOne(()=> User,(user)=> user.history)
+    @ManyToOne(() => User, (user) => user.history)
     @JoinColumn({ name: "userId" })
-    userId: number
+    user: User
 }

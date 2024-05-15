@@ -9,10 +9,13 @@ import About from './views/About/About'
 import Contact from './views/Contact/Contact'
 import { Routes,Route } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import { useSelector } from "react-redux"
+import { selectUser } from "../src/redux/reducer"
 
 function App() {
 
   const location = useLocation()
+  const userLogged = useSelector(selectUser)
 
   return (
     <>
@@ -21,7 +24,7 @@ function App() {
         <Route path="/" element={< Home />}></Route>
         <Route path="/about" element={< About />}></Route>
         <Route path="/contact" element={< Contact />}></Route>
-        <Route path="/schedule" element={< MySchedule />}></Route>
+        { userLogged && <Route path="/schedule" element={< MySchedule />}></Route> }
         <Route path="/register" element={< Register />}></Route>
         <Route path="/login" element={< Login />}></Route>
       </Routes>

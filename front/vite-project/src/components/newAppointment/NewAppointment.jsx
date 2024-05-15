@@ -1,9 +1,13 @@
 import {Formik,Field,Form,ErrorMessage} from "formik"
 import styles from "./NewAppointment.module.css"
 import axios from "axios"
+import { useSelector } from "react-redux"
+import { selectUser } from "../../redux/reducer"
 
 
 const NewAppointment = ({ onData }) => {
+
+    const userLogged = useSelector(selectUser)
 
     const sendUpdate = (id) => {
         onData(id);
@@ -11,7 +15,7 @@ const NewAppointment = ({ onData }) => {
 
     const handleOnSubmit = async(values) => {
         try {
-            await axios.post("http://localhost:3000/appointments/schedule",{...values,userId:1})
+            await axios.post("http://localhost:3000/appointments/schedule",{...values,userId:userLogged})
             sendUpdate(values.id)
         } catch(error) {
             if (error.response && error.response.data && error.response.data.error) {

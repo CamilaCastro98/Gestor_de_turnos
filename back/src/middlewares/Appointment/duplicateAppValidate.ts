@@ -5,7 +5,7 @@ import CustomError from "../../errors/CustomError"
 
 const duplicateAppValidate = async (req: Request,res: Response,next: NextFunction) => {
     const {userId,date,time} = req.body
-    const appoinmtents: Appointment[] | null = await AppointmentModel.find({ where: { userId: userId, date: date} })
+    const appoinmtents: Appointment[] | null = await AppointmentModel.find({ where: { user: userId, date: date} })
     if (appoinmtents) {
         for (const turn of appoinmtents) {
             if (turn.time === time) {

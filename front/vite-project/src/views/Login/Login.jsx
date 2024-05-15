@@ -2,17 +2,23 @@ import axios from "axios"
 import {Formik,Field,Form,ErrorMessage} from "formik"
 import validateLogin from "../../helpers/validations/login"
 import { useNavigate } from "react-router-dom"
-
-
+import { useDispatch,useSelector } from "react-redux"
+import { login } from "../../redux/reducer"
+import { selectUser } from "../../redux/reducer"
+import { useEffect } from "react"
+ 
 const Login = () => {
 
     const navigate = useNavigate()
+    const userLogged = useSelector(selectUser)
+    const dispatch = useDispatch()
 
     const handleOnSubmit = async (values) => {
         try {
-           await axios.post("http://localhost:3000/users/login",values)
-           alert("Your are logged in!")
-           navigate("/")
+           await axios.post("http://localhost:3000/users/login",values).then((res)=> {
+            dispatch(login(res.data.user.id))
+            navigate("/")
+           })
         } catch(error) {
             if (error.response && error.response.data && error.response.data.error) {
                 alert("Error: " + error.response.data.error);

@@ -4,19 +4,31 @@ import {useEffect, useState} from 'react'
 import styles from "./MySchedule.module.css"
 import axios from "axios"
 import NewAppointment from "../../components/newAppointment/NewAppointment"
+import { useSelector } from "react-redux"
+import { selectUser } from "../../redux/reducer"
 
 const MySchedule = () => {
     const [appointments, setAppointments] = useState([])
     const [update, setUpdate] = useState(0)
     const [formVisibility,setFormVisibility] = useState(styles.disableForm)
-    const userId = 1
+    const userLogged = useSelector(selectUser)
 
-    useEffect(()=>{
-        axios.get("http://localhost:3000/appointments").then((res)=> {
-            const filteredAppointments = res.data.filter(appointment => appointment.userId.id === userId)
-            setAppointments(filteredAppointments)
-        })
-    },[update])
+    useEffect(() => {
+        if (userLogged) {
+            axios.get("http://localhost:3000/appointments")
+                .then((res) => {
+                    const filteredAppointments = res.data.filter(
+                        appointment => appointment.userId.id === userLogged
+                    );
+                    setAppointments(filteredAppointments);
+                })
+                .catch((error) => {
+                    console.error("Error fetching appointments:", error);
+                });
+        } else {
+            console.log("userLogged is not defined");
+        }
+    }, [userLogged, update])
 
     const handleNewApp = () => {
         setFormVisibility(styles.enableForm)

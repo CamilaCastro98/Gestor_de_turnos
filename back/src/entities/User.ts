@@ -34,6 +34,6 @@ export class User {
     @JoinColumn()
     credentialsId: Credential
 
-    @OneToMany(()=> Appointment, (appointment) => appointment.userId)
+    @OneToMany(()=> Appointment, (appointment) => appointment.user)
     history: Appointment[]
 }

@@ -15,6 +15,14 @@ export const getOneAppointmentService = async (id:number): Promise<Appointment |
     return appointment
 }
 
+export const getAppointmentByUserService = async (id:number): Promise<Appointment[] | null> => {
+    const appointments = await AppointmentRepository.find({
+        where: { user: { id } },
+        relations: ["user"]
+    })
+    return appointments
+}
+
 export const createAppointmentService = async (appointmentData: AppointmentDto): Promise<Appointment | undefined> => {
     const {date,time,userId,service} = appointmentData
     const user = await getUserByIdService(userId)
@@ -23,8 +31,8 @@ export const createAppointmentService = async (appointmentData: AppointmentDto):
             date,
             time,
             service,
-            status: Status.inProgress,
-            userId: userId
+            state: Status.inProgress,
+            user: user
         })
         const results = await AppointmentRepository.save(newAppointment)
         return results
@@ -34,7 +42,7 @@ export const createAppointmentService = async (appointmentData: AppointmentDto):
 export const cancelAppointmentService = async (id:number): Promise<Appointment | undefined> => {
     const appointment: Appointment | null = await getOneAppointmentService(id)
     if(appointment){
-        appointment.status = Status.cancelled
+        appointment.state = Status.cancelled
         await AppointmentRepository.save(appointment)
         return appointment
     }

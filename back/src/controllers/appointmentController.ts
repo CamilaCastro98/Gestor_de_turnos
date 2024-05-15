@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express"
-import { cancelAppointmentService, createAppointmentService, getAppointmentsService, getOneAppointmentService } from "../services/appointmentsServices"
+import { cancelAppointmentService, createAppointmentService, getAppointmentByUserService, getAppointmentsService, getOneAppointmentService } from "../services/appointmentsServices"
 import { Appointment } from "../entities/Appointment"
 import CustomError from "../errors/CustomError"
 import { getUserByIdService } from "../services/usersServices"
@@ -22,6 +22,16 @@ export const getOneAppointment = async (req: Request,res: Response,next: NextFun
     if (appointmentById) res.status(200).json(appointmentById)
         else {
             const err = new CustomError(`There's no appointment with id ${appointmentId}`,404)
+            next(err)
+        }
+}
+
+export const getAppointmentsByUser = async (req: Request,res: Response,next: NextFunction) => {
+    const userId:number = parseInt(req.params.id,10)
+    const appointmentsByUser: Appointment[] | null = await getAppointmentByUserService(userId)
+    if (appointmentsByUser) res.status(200).json(appointmentsByUser)
+        else {
+            const err = new CustomError(`There's no user with id ${userId}`,404)
             next(err)
         }
 }
