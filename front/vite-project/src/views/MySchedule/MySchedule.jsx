@@ -63,10 +63,10 @@ const MySchedule = () => {
                          <button className={styles.cancelNew} onClick={handleCancelNewApp}>Cancel</button>
                     </div>
                 </div>
-                {appointments.map(app => {
+                {appointments.length > 0 ? appointments.map(app => {
                     return (
                     <Appointment key={app.id} {...app}/>)
-                })}
+                }) : <p className={styles.noAppointments}>No appointments scheduled yet!</p>}
             </div>
         </div>
         </div>

@@ -18,7 +18,6 @@ const Login = () => {
            await axios.post("http://localhost:3000/users/login",values).then((res)=> {
             dispatch(login(res.data.user))
             navigate("/")
-            console.log(userLogged)
            })
         } catch(error) {
             if (error.response && error.response.data && error.response.data.error) {

@@ -3,6 +3,7 @@ import styles from "./NewAppointment.module.css"
 import axios from "axios"
 import { useSelector } from "react-redux"
 import { selectUserId } from "../../redux/reducer"
+import validateNewApp from "../../helpers/validations/newAppointment/validateNewApp"
 
 
 const NewAppointment = ({ onData }) => {
@@ -35,6 +36,7 @@ const NewAppointment = ({ onData }) => {
                 time: "",
                 service: ""
             }}
+            validate={validateNewApp}
             onSubmit={(values, { setSubmitting }) => {
                 handleOnSubmit(values);
                 setSubmitting(false);

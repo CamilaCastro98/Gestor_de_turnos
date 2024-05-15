@@ -108,3 +108,13 @@
     color: #DC602E;
     border-color:#DC602E
 }
+
+.noAppointments {
+    color:#ffffff;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 3vw;
+    font-size: 2vw;
+    background-color: rgba(241,232,224,0.3) ;
+    padding: 1vw;
+}
