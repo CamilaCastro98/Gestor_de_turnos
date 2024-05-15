@@ -8,7 +8,7 @@ const Footer = () => {
                 <h3>Contact us</h3>
                 <p>Email: reactFitness@mail.com</p>
                 <p>Phone: +123456789</p>
-                <p>Adress: 1234 Maple Street, Springfield, USA</p>
+                <p>Address: 1234 Maple Street, Springfield, USA</p>
             </div>
             <div>
                 <h3>Follow us</h3>

@@ -1,0 +1,15 @@
+.staticContainer {
+   padding: 15vw;
+   text-align: center;
+   color: rgba(241,232,224,0.7)
+}
+
+.staticContainer h1 {
+    font-size: 5vw;
+    margin-bottom: 2vw;
+}
+
+.staticContainer p {
+    font-size: 2vw;
+    line-height: 3vw;
+}
