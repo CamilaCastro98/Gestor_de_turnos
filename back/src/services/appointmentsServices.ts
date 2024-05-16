@@ -6,7 +6,7 @@ import { getUserByIdService } from "./usersServices"
 
 
 export const getAppointmentsService = async (): Promise<Appointment[]> => {
-    const allAppointments: Appointment[] = await AppointmentRepository.find({relations:['userId']})
+    const allAppointments: Appointment[] = await AppointmentRepository.find()
     return allAppointments
 }
 

@@ -10,7 +10,7 @@ const validateTime = (req: Request,res: Response,next: NextFunction) => {
     }
     const hours:number = parseInt(time.split(":")[0])
 
-    if(hours < 9 || hours > 21) {
+    if(hours < 9 || hours > 20) {
         const err = new CustomError("The opening hours are from 9 to 21",400)
             next(err)
     }
