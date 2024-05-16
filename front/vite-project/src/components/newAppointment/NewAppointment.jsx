@@ -16,8 +16,9 @@ const NewAppointment = ({ onData }) => {
 
     const handleOnSubmit = async(values) => {
         try {
-            await axios.post("http://localhost:3000/appointments/schedule",{...values,userId:userLogged})
-            sendUpdate(values.id)
+            await axios.post("http://localhost:3000/appointments/schedule",{...values,userId:userLogged}).then((res)=>{
+                sendUpdate(res.data.id) 
+            })
             alert("Appointment successfully created!")
         } catch(error) {
             if (error.response && error.response.data && error.response.data.error) {
@@ -44,17 +45,24 @@ const NewAppointment = ({ onData }) => {
               }}
             >
                 <Form className={styles.newForm}>
-                    <Field  type="date" 
+                    <div>
+                        <Field  type="date" 
                             name="date"
                             className="form-control" ></Field>
-                    <ErrorMessage name="date" className="text-danger" component="div" ></ErrorMessage>
-                    <Field  type="time" 
+                        <ErrorMessage name="date" className="text-danger" component="div" ></ErrorMessage>
+                    </div>
+
+                    <div>
+                        <Field  type="time" 
                             name="time" 
                             step="300"
                             min="09:00"
                             max="21:00"
                             className="form-control" ></Field>
-                    <ErrorMessage name="time" className="text-danger" component="div"></ErrorMessage>
+                        <ErrorMessage name="time" className="text-danger" component="div"></ErrorMessage>
+                    </div>
+
+                    <div>
                         <Field as="select" name="service" className="form-control">
                             <option value="">Select a service</option>
                             <option value="Yoga">Yoga</option>
@@ -63,6 +71,7 @@ const NewAppointment = ({ onData }) => {
                             <option value="Free Workout">Free Workout</option>
                         </Field>
                         <ErrorMessage name="service" className="text-danger" component="div" />
+                    </div>
                         <button type="submit">Submit</button>
                 </Form>
             </Formik>

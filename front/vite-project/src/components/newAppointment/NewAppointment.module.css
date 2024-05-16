@@ -3,9 +3,21 @@
     flex-direction: row;
 }
 
+.newForm div {
+    display: flex;
+    flex-direction: column;
+    max-width: 11vw;
+    margin-right: 2vw;
+}
+
+.newForm div:last-child {
+    margin-top: 1vw;
+    font-size: 1vw;
+}
+
 .newForm input,.newForm select {
     width: 11vw;
-    margin-right: 2vw;
+    min-height: 6vh;
 }
 
 .newForm button {

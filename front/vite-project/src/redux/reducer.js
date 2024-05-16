@@ -19,11 +19,14 @@ export const sliceUser = createSlice({
         },
         getAppointments: (state,action) => {
             state.userAppointments = action.payload
+        },
+        cancelAppointments: (state,action) => {
+            state.userAppointments = state.userAppointments
         }
     }
 })
 
-export const {login,getAppointments} = sliceUser.actions
+export const {login,getAppointments,cancelAppointments} = sliceUser.actions
 
 export const selectUserId = (state) => state.user.id
 export const selectUserName = (state) => state.user.name

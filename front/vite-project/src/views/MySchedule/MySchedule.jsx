@@ -20,6 +20,7 @@ const MySchedule = () => {
                 .then((res) => {
                     setAppointments(res.data)
                     dispatch(getAppointments(res.data))
+                    setFormVisibility(styles.disableForm)
                 })
                 .catch((error) => {
                     console.error("Error fetching appointments:", error);
