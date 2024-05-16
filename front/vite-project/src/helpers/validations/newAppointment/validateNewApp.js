@@ -3,7 +3,6 @@ const validateNewApp = (values)=> {
     const {date,time,service} = values
     const today = new Date()
     const newDate = new Date(`${date}T${time}`)
-    const justDate = new Date(date)
     const newTime = parseInt(time.slice(0,2))
 
     if (!date || (newDate < today)) {
@@ -13,7 +12,7 @@ const validateNewApp = (values)=> {
         errors.date = "No service on weekends"
     }
 
-    if (!time || newTime < 9 || newTime > 21) {
+    if (!time || newTime < 9 || newTime > 20) {
         errors.time = "Please enter a valid time between 9am and 9pm"
     }
     if (!service) {
