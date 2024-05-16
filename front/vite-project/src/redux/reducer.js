@@ -30,3 +30,4 @@ export const {login,getAppointments,cancelAppointments} = sliceUser.actions
 
 export const selectUserId = (state) => state.user.id
 export const selectUserName = (state) => state.user.name
+export const selectAppointments = (state) => state.userAppointments

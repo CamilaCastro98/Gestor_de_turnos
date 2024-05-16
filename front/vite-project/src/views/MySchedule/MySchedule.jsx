@@ -4,21 +4,20 @@ import {useEffect, useState} from 'react'
 import styles from "./MySchedule.module.css"
 import axios from "axios"
 import NewAppointment from "../../components/newAppointment/NewAppointment"
-import { useSelector, useDispatch } from "react-redux"
-import { getAppointments, selectUserId } from "../../redux/reducer"
+import { useSelector, useDispatch} from "react-redux"
+import { getAppointments, selectUserId,selectAppointments} from "../../redux/reducer"
 
 const MySchedule = () => {
-    const [appointments, setAppointments] = useState([])
     const [update, setUpdate] = useState(0)
     const [formVisibility,setFormVisibility] = useState(styles.disableForm)
     const userLogged = useSelector(selectUserId)
     const dispatch = useDispatch()
+    const appointments = useSelector(selectAppointments);
 
     useEffect(() => {
         if (userLogged) {
             axios.get(`http://localhost:3000/appointments/schedule/${userLogged}`)
                 .then((res) => {
-                    setAppointments(res.data)
                     dispatch(getAppointments(res.data))
                     setFormVisibility(styles.disableForm)
                 })
@@ -28,7 +27,11 @@ const MySchedule = () => {
         } else {
             console.log("userLogged is not defined");
         }
-    }, [userLogged, update])
+    }, [dispatch,userLogged, update])
+
+    useEffect(() => {
+        console.log(appointments);
+    }, [appointments]);
 
     const handleNewApp = () => {
         setFormVisibility(styles.enableForm)
@@ -64,10 +67,11 @@ const MySchedule = () => {
                          <button className={styles.cancelNew} onClick={handleCancelNewApp}>Cancel</button>
                     </div>
                 </div>
-                {appointments.length > 0 ? appointments.map(app => {
-                    return (
-                    <Appointment key={app.id} {...app}/>)
-                }) : <p className={styles.noAppointments}>No appointments scheduled yet!</p>}
+                {appointments && appointments.length > 0 ? (
+            appointments.map((app) => <Appointment key={app.id} {...app} />)
+          ) : (
+            <p className={styles.noAppointments}>No appointments scheduled yet!</p>
+          )}
             </div>
         </div>
         </div>
