@@ -18,6 +18,7 @@ const NewAppointment = ({ onData }) => {
         try {
             await axios.post("http://localhost:3000/appointments/schedule",{...values,userId:userLogged})
             sendUpdate(values.id)
+            alert("Appointment successfully created!")
         } catch(error) {
             if (error.response && error.response.data && error.response.data.error) {
                 alert("Error: " + error.response.data.error);
