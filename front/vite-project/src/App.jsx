@@ -1,5 +1,5 @@
 import Home from './views/Home/Home';
-import "../styles/App.module.css";
+import styles from '../styles/App.module.css'
 import Footer from "./components/Footer/Footer";
 import Navbar from './components/Navbar/Navbar';
 import MySchedule from './views/MySchedule/MySchedule';
@@ -20,7 +20,7 @@ function App() {
   const showFooter = location.pathname !== "/register" && location.pathname !== "/login";
 
   return (
-    <>
+    <div className={styles.app}>
       {showNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -35,7 +35,7 @@ function App() {
           <Footer />
         </footer>
       )}
-    </>
+    </div>
   );
 }
 
