@@ -16,7 +16,7 @@ const Navbar = () => {
     return (
         <nav>
             <div className={styles.smNav}>
-                <Link to="/"><img className={styles.logo} src="../src/assets/logo.png" alt="logo" /></Link>
+                <Link to="/"><img className={styles.logo} src="../assets/logo.png" alt="logo" /></Link>
                 <IoMdMenu className={styles.menuIcon} onClick={toggleMenu} />
             </div>
             <div className={`${styles.navbarLinks} ${menuOpen ? '' : styles.hide }`}>

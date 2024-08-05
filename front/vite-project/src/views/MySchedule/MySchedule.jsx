@@ -47,7 +47,7 @@ const MySchedule = () => {
 
     return (
         <div className={styles.scheduleContainer}>
-        <img className={styles.scheduleImg} src="../src/assets/schedule.jpg" alt="scheduleBackground" />
+        <img className={styles.scheduleImg} src="../assets/schedule.jpg" alt="scheduleBackground" />
         <div className={styles.appsContainer}>
             <div className={styles.title}>
                 <h1>My schedule</h1>

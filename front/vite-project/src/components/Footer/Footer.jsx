@@ -12,7 +12,7 @@ const Footer = () => {
             </div>
             <div>
                 <h3>Follow us</h3>
-                <img className={styles.socials} src="../src/assets/socials.png" alt="" />
+                <img className={styles.socials} src="../assets/socials.png" alt="" />
             </div>
         </div>
         <p>© 2024 React Fitness. All rights reserved.</p>
