@@ -1,7 +1,10 @@
 .container {
-    width: 80%;
+    width: 50%;
     background-color: #DC602E;
-    padding: 2.5vw 4vw 6vw 4vw;
+    padding: 3.5vw 2vw 6vw 2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     border-radius: 5px;
 }
 
@@ -12,7 +15,7 @@
 }
 
 .container h1 {
-    font-size: 4vw;
+    font-size: 2vw;
     font-weight: 600;
     width: 100%;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -47,7 +50,28 @@
     border-color: black;
 }
 
+.text-danger {
+    margin-top: 10px;
+}
+
 .btn-outline-secondary {
     color: black
+}
+
+@media (max-width: 767px) {
+    .container {
+        width: 80%;
+        padding-top: 30px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 60px;
+    }
+    .container h1 {
+        font-size: 4vw;
+    }
+    .form {
+        padding: 6vw;
+    }
+
 }
 

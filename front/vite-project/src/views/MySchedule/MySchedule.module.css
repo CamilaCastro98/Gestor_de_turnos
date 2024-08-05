@@ -1,12 +1,13 @@
 .scheduleContainer {
     position: relative;
+    overflow: hidden;
 }
 
 .appsContainer {
     display: flex;
     flex-direction: column;
     width: 70%;
-    height: 95vh;
+    height: 60%;
     overflow: scroll;
     color: black;
     position: absolute;
@@ -63,8 +64,8 @@
     color: #FFFFFF;
 }
 .scheduleImg {
-    width: 100%;
-    height: auto;
+    width: 1500px;
+    height: 900px;
     z-index: -1;
     filter: brightness(60%);
 }
@@ -119,4 +120,33 @@
     font-size: 2vw;
     background-color: rgba(241,232,224,0.3) ;
     padding: 1vw;
+}
+
+@media (max-width: 767px) {
+    .newApp {
+        font-size:smaller;
+    }
+    .newAppContainer {
+        flex-direction: column;
+        padding-left: 2em;
+        padding-right: 2em;
+        height: fit-content;
+    }
+    .cancelNew {
+        padding: 0.5em !important;
+        margin-top: 5px;
+    }
+    .newAppContainer button {
+        margin-left: 0px;
+    }
+
+    .appsContainer {      
+        top: 15%
+    }
+    .scheduleImg {
+        width: 900px;
+        height: 600px;
+        z-index: -1;
+        filter: brightness(60%);
+    }
 }

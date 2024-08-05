@@ -15,7 +15,7 @@ const HeaderTitle = () => {
              <p className={styles.headerP}>Your agenda, your time, your way</p>
              <div className={styles.headerButtons}>
                 <Link to="/login" className={styles.login}>Login</Link>
-                <p>Not a member yet? <span><Link to="/register" className={styles.signup}>Sign Up</Link></span></p>
+                <p className={styles.notMember}>Not a member yet? <span><Link to="/register" className={styles.signup}>Sign Up</Link></span></p>
              </div>
 
         </div>)}

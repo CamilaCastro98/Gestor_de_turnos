@@ -6,8 +6,8 @@ nav {
     align-items: center;
     width: 100%;
     background-color: #0C0C0C;
-    padding: 1vw 0 1vw 0;
-    border-bottom: 2px solid rgb(241,232,224);
+    padding: 1vw 2vw 1vw 2vw;
+    opacity: 90%;
 }
 
 .logo {
@@ -40,6 +40,81 @@ nav a {
     color: #0C0C0C;
 }
 
+.menuIcon {
+    color: white;
+    display: none;
+}
+
 a:hover {
     color: #DC602E
+}
+
+.links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2vw;
+    }
+
+    .logo {
+        width: 20vw;
+        padding-left: 0;
+    }
+
+    .navbarLinks {
+        flex-direction: column;
+        gap: 1vw;
+        padding-right: 0;
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 3vw;
+    }
+
+    .register {
+        padding: 1vw;
+        font-size: 3vw;
+    }
+    .menuIcon {
+        display: block;
+        cursor: pointer;
+    }
+    .smNav {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        padding: 1vw 2vw 1vw 2vw;
+    }
+    .links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+    .hide {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .logo {
+        width: 12vw;
+    }
+
+    nav a {
+        font-size: 1.5vw;
+    }
+
+    .register {
+        padding: 0.75vw;
+        font-size: 1.5vw;
+    }
 }

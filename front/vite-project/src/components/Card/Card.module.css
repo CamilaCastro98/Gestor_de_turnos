@@ -1,5 +1,4 @@
 .cardContainer {
-    border: 5px solid rgb(23, 22, 22);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,3 +43,18 @@
 .cardContainer:hover div {
     visibility: visible;
 }
+
+@media (max-width: 767px) {
+    .cardContainer {
+        width: 10em;
+    }
+    .cardContainer div {
+        width: 100%;
+        font-size: 0.7em;
+        padding:10px;
+        padding-top: 50px;
+    }
+    .cardContainer h2 {
+        font-size: 0.7em;
+    }
+ }

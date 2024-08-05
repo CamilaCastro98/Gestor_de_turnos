@@ -33,5 +33,29 @@
 
 .text-danger {
     flex-basis: 100%;
-    order: 3
+    order: 3;
+}
+
+@media (max-width: 767px) {
+    .newForm {
+        flex-direction: column;
+        gap:10px;
+    }
+    .newForm div {
+        max-width:100%;
+        margin-right: 0px;
+    }
+    .newForm input,.newForm select {
+        width: 100%;
+        min-height: 3vh;
+    }
+    .newForm button {
+    padding: 0.5em;
+    margin-left: 0px;
+}
+
+.newForm div:last-child {
+    font-size: 0.5em;
+}
+    
 }

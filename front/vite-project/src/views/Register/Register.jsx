@@ -37,7 +37,7 @@ const Register = () => {
 
     return (
         <div className="container mt-5 mb-5">
-                <h1 className="mb-5">Register here!</h1>
+                <h1 className="">Register here!</h1>
             <Formik
             initialValues={{
                 name: "",
@@ -102,8 +102,8 @@ const Register = () => {
                     <ErrorMessage name="password" className="text-danger" component="div"></ErrorMessage>
                 </div>
                 <div className="d-flex mt-4 justify-content-center">
-                        <button onClick={handleOnCancel} className="btn btn-lg btn-outline-secondary me-2" type="button">CANCEL</button>
-                        <button className="btn btn-lg btn-secondary" type="submit">SUBMIT</button>
+                        <button onClick={handleOnCancel} className="btn btn-md btn-outline-secondary me-2" type="button">CANCEL</button>
+                        <button className="btn btn-md btn-secondary" type="submit">SUBMIT</button>
                 </div>
                 <div className="text-center mt-3">
                          <p>Already have an account? <a href="/login">Login</a></p>

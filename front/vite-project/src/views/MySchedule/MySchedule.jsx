@@ -64,7 +64,7 @@ const MySchedule = () => {
                 <div className={formVisibility}>
                     <div className={styles.newAppContainer}>
                         < NewAppointment onData={handleUpdate} />
-                         <button className={styles.cancelNew} onClick={handleCancelNewApp}>Cancel</button>
+                        <button className={styles.cancelNew} onClick={handleCancelNewApp}>Cancel</button>
                     </div>
                 </div>
                 {appointments && appointments.length > 0 ? (

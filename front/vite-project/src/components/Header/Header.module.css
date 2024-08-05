@@ -1,4 +1,12 @@
 .container {
-    position: relative;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background-image: url('../src/assets/gym.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: auto;
+    filter: sepia(0.2);
   }
   

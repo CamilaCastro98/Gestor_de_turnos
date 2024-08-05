@@ -1,14 +1,12 @@
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width:65%;
     background-color: rgba(241,232,224,0.7);
     padding: 6vw 4vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 60%;
+    margin-top: 10vw;
+    margin-bottom: 5vw;
 }
 
 .headerTitle {
@@ -28,8 +26,24 @@
     2px -2px 0px #000;
 }
 
+.notMember {
+    font-size: 1vw;
+}
+
+@media (max-width: 767px) {
+   .headerTitle span {
+    text-shadow: 1px 1px 1px #000,
+    -1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000;;
+   }
+   .container {
+    margin-top: 15vw;
+   }
+}
+
 .headerP {
-    font-size: 3vw;
+    font-size: 2vw;
     padding: 2.5vw;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)
 }
@@ -42,7 +56,7 @@
 }
 
 .login {
-    font-size: 2vw;
+    font-size: 1.5vw;
     padding: 1vw 2vw;
     background-color: #000;
     color:aliceblue;
